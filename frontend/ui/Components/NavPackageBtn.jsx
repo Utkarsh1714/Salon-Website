@@ -32,7 +32,7 @@ const NavPackageBtn = () => {
           Packages <ChevronDown />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-44 flex items-center justify-center bg-[#F2E9DF]">
+      <DropdownMenuContent className="flex items-center justify-center bg-[#F2E9DF]">
         <DropdownMenuGroup>
           <DropdownMenuItem>Basic Grooming</DropdownMenuItem>
           <DropdownMenuItem>Pre-Bridal</DropdownMenuItem>

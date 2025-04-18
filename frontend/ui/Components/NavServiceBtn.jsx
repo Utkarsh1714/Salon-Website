@@ -69,7 +69,7 @@ const NavServiceBtn = () => {
           Services <ChevronDown />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-40 bg-[#F2E9DF] text-[#5B3728]">
+      <DropdownMenuContent className="bg-[#F2E9DF] text-[#5B3728]">
         <DropdownMenuGroup>
           {services.map(({ label, items }) => (
             <DropdownMenuSub key={label}>

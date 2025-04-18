@@ -11,7 +11,7 @@ export const AuthButton = () => {
       <SignedIn>
         <div className="flex items-center justify-center gap-2">
           <UserButton />
-          <h4 className="text-[#5B3728]">Profile</h4>
+          <h4 className="text-[#5B3728] cursor-pointer">Profile</h4>
         </div>
         {/* Add menu items for studio and user profiles */}
       </SignedIn>
