@@ -68,7 +68,7 @@ export default function Home() {
             threshold={0.2}
           >
             <div className="flex items-center justify-center flex-col gap-8">
-              <div className="w-full max-w-sm md:max-w-md flex flex-col items-center justify-center">
+              <div className="w-full max-w-sm md:max-w-md flex flex-col items-center justify-center sm:mt-30">
                 <Image
                   width={500}
                   height={500}
