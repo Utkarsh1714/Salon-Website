@@ -1,3 +1,5 @@
+"use client"
+
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import React from "react";
@@ -9,7 +11,7 @@ import MobileNav from "../Mobile-Navbar/MobileNav";
 
 const Navbar = () => {
   return (
-    <div className="w-full flex items-center justify-between bg-[#F2E9DF] px-10 py-4 text-[#5B3728]">
+    <div className="w-full flex items-center justify-between bg-[#F2E9DF] px-10 py-4 text-[#5B3728] z-50 overflow-hidden">
       <div>
         <h1 className="text-2xl logo font-bold">Pooja Salon</h1>
       </div>
@@ -28,9 +30,9 @@ const Navbar = () => {
           <Link href={''} className={"cursor-pointer"}>
             <NavServiceBtn />
           </Link>
-          <Button variant={"ghost"} className={"cursor-pointer"}>
+          <Link href={''} className={"cursor-pointer"}>
             <NavPackageBtn />
-          </Button>
+          </Link>
         </div>
       </div>
       <div className="hidden md:flex items-center justify-center gap-4">

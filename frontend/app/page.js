@@ -24,15 +24,15 @@ export default function Home() {
   };
 
   return (
-    <div className="w-full max-w-dvw overflow-x-hidden">
+    <div className="w-full max-w-dvw">
       <div className="w-full bg-[#F2E9DF]">
         <Navbar />
       </div>
 
       {/* Hero Section */}
-      <div className="w-full flex flex-col md:flex-row items-center justify-center px-4 md:px-0 py-10 md:py-0">
+      <div className="w-full flex flex-col md:flex-row items-center justify-center px-4 md:px-8 py-10 md:py-0">
         {/* Left Content */}
-        <div className="w-full md:w-1/2 flex items-center justify-center md:-mt-20 md:px-4 md:pl-20">
+        <div className="w-full md:w-1/2 flex items-center justify-center md:mt-10 md:px-4 z-0">
           <AnimatedContent
             distance={150}
             direction="vertical"
@@ -44,7 +44,7 @@ export default function Home() {
             threshold={0.2}
           >
             <div className="flex items-center justify-center flex-col gap-8">
-              <div className="w-full max-w-sm md:max-w-md flex flex-col items-center justify-center sm:mt-30">
+              <div className="w-full max-w-sm md:max-w-md flex flex-col items-center justify-center">
                 <Image
                   width={500}
                   height={500}
@@ -94,8 +94,8 @@ export default function Home() {
 
       {/* Introduction Section */}
 
-      <div className="px-4 md:px-20 py-10 md:py-20 flex items-center justify-center">
-        <div className="bg-[#F2E9DF] w-full rounded-4xl flex flex-col md:flex-row items-center justify-center p-6 md:py-20">
+      <div className="px-4 md:px-10 py-10 md:py-20 flex items-center justify-center">
+        <div className="bg-[#F2E9DF] w-full rounded-4xl flex flex-col md:flex-row items-center justify-center p-6 md:py-20 px-4 md:px-7 md:gap-4 lg:gap-0">
           {/* Owner Image */}
           <div className="w-full md:w-1/2 flex items-center justify-center mb-8 md:mb-0">
             <Image
@@ -108,7 +108,7 @@ export default function Home() {
           </div>
 
           {/* Text Section */}
-          <div className="w-full md:w-1/2 text-[#5B3728] flex flex-col items-center md:items-center px-4 md:pr-10 space-y-4 md:-mt-20">
+          <div className="w-full md:w-1/2 text-[#5B3728] flex flex-col items-center md:items-center px-6  space-y-4 md:-mt-20">
             <Image
               width={500}
               height={500}
@@ -116,7 +116,7 @@ export default function Home() {
               alt="img"
               className="w-[200px] md:w-[350px] mix-blend-color-burn"
             />
-            <div className="text-base md:text-xl space-y-4">
+            <div className="text-base md:text-base lg:text-2xl space-y-4">
               <p className=" italic font-medium">&quot;Where Passion Meets Beauty&quot;</p>
               <p className="py-2">
                 Meet Pooja Palav, a passionate and skilled beautician with over
@@ -148,7 +148,7 @@ export default function Home() {
       />
 
       {/* Services Section */}
-      <div className="py-10 md:px-30 w-full">
+      <div className="py-10 md:px-15 w-full">
         <div className="flex flex-col items-center justify-center w-full">
           <div>
             <Image
@@ -162,7 +162,7 @@ export default function Home() {
             className="flex flex-col md:flex-row items-center justify-center w-full relative"
             onMouseMove={handleMouseMove}
           >
-            <div className="w-full md:w-1/2 flex flex-col items-center justify-center z-50 px-10 md:px-16">
+            <div className="w-full md:w-1/2 flex flex-col items-center justify-center px-8 md:px-0 z-50">
               <AnimatedContent
                 distance={150}
                 direction="vertical"
