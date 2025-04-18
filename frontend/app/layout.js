@@ -1,7 +1,6 @@
 import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
-import { icons } from "lucide-react";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -16,7 +15,6 @@ export const metadata = {
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
   },
 };
 
