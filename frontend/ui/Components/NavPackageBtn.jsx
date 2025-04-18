@@ -6,7 +6,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Separator } from "@/components/ui/separator";
+import { useAuth, useClerk } from "@clerk/nextjs";
 import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 import React from "react";
@@ -18,6 +18,10 @@ const NavPackageBtn = () => {
     "Glam Party Ready",
     "Relax & Rejuvenate",
   ];
+
+  const clerk = useClerk();
+  const { isSignedIn } = useAuth();
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -25,7 +29,7 @@ const NavPackageBtn = () => {
           Packages <ChevronDown />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="flex items-center justify-center bg-[#F2E9DF]">
+      <DropdownMenuContent className="flex items-center justify-center bg-[#F2E9DF] text-[#5B3728]">
         <DropdownMenuGroup>
           {packages.map((pkg) => (
             <DropdownMenuItem key={pkg}>
