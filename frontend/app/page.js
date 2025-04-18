@@ -125,7 +125,7 @@ export default function Home() {
             <Image
               width={400}
               height={500}
-              src="/owner.jpg"
+              src="/owner.webp"
               alt="owner"
               className="w-[250px] md:w-[450px] h-auto rounded-tl-[80px] rounded-br-[80px]"
             />
