@@ -125,9 +125,9 @@ export default function Home() {
             <Image
               width={400}
               height={500}
-              src="/hero_img2.webp"
+              src="/owner.jpg"
               alt="owner"
-              className="w-[300px] md:w-[450px] h-auto rounded-tl-[80px] rounded-br-[80px]"
+              className="w-[250px] md:w-[450px] h-auto rounded-tl-[80px] rounded-br-[80px]"
             />
           </div>
 
@@ -141,19 +141,20 @@ export default function Home() {
               className="w-[200px] md:w-[350px] mix-blend-color-burn"
             />
             <div className="text-base md:text-xl space-y-4">
-              <p>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magnam
-                cum, dolorem veritatis reiciendis quaerat ullam est dolor harum
-                corporis necessitatibus itaque sed, soluta facilis quia
-                exercitationem! Minima, ab sunt dolor provident ullam nemo
-                libero blanditiis illo voluptatibus voluptatem voluptate
-                obcaecati, voluptatum amet repellat voluptates tenetur nesciunt
-                quas quos iure aperiam.
+              <p className=" italic font-medium">"Where Passion Meets Beauty"</p>
+              <p className="py-2">
+                Meet Pooja Palav, a passionate and skilled beautician with over
+                20 years of experience. Before launching her own salon, she
+                spent 3 years working in another parlor — learning, growing, and
+                saving to turn her dream into reality.
               </p>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque,
-                suscipit?
+                Today, she runs the salon with the same dedication and warmth
+                she began with. A proud wife, mother, and entrepreneur, Pooja
+                effortlessly balances family and business, offering every client
+                not just a service, but a beautiful experience.
               </p>
+
               <div className="flex flex-col items-start justify-center pt-5 text-lg font-semibold">
                 <h4>Pooja Palav</h4>
                 <p>Bhayandar, Mumbai</p>
@@ -174,7 +175,12 @@ export default function Home() {
       <div className="py-10 w-full">
         <div className="flex flex-col items-center justify-center w-full">
           <div>
-            <Image src="/Services.png" alt="Services" width={300} height={300} />
+            <Image
+              src="/Services.png"
+              alt="Services"
+              width={300}
+              height={300}
+            />
           </div>
           <div
             className="flex flex-col md:flex-row items-center justify-center w-full relative"
@@ -233,7 +239,12 @@ export default function Home() {
                 scale={1.1}
                 threshold={0.2}
               >
-                <Image width={400} height={300} src="/Service-logo.png" alt="Service-sec-img" />
+                <Image
+                  width={400}
+                  height={300}
+                  src="/Service-logo.png"
+                  alt="Service-sec-img"
+                />
               </AnimatedContent>
             </div>
           </div>
