@@ -13,7 +13,7 @@ const Navbar = () => {
       <div>
         <h1 className="text-2xl logo font-bold">Pooja Salon</h1>
       </div>
-      <div className="items-center justify-center gap-4 hidden lg:block">
+      <div className="items-center justify-center gap-4 hidden md:block">
         <div>
           <Link href={"/"}>
             <Button variant={"ghost"} className={"cursor-pointer"}>

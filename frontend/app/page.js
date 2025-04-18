@@ -9,29 +9,6 @@ import Link from "next/link";
 import Image from "next/image";
 
 export default function Home() {
-  // const items = [
-  //   {
-  //     link: "#",
-  //     text: "Mojave",
-  //     image: "https://picsum.photos/600/400?random=1",
-  //   },
-  //   {
-  //     link: "#",
-  //     text: "Sonoma",
-  //     image: "https://picsum.photos/600/400?random=2",
-  //   },
-  //   {
-  //     link: "#",
-  //     text: "Monterey",
-  //     image: "https://picsum.photos/600/400?random=3",
-  //   },
-  //   {
-  //     link: "#",
-  //     text: "Sequoia",
-  //     image: "https://picsum.photos/600/400?random=4",
-  //   },
-  // ];
-
   const services = [
     { name: "Hair Care", image: "/services/Haircare.jpeg" },
     { name: "Skin & Face", image: "/services/SkinFace.jpeg" },
