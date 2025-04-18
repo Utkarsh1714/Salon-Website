@@ -5,6 +5,7 @@ import NavServiceBtn from "../Components/NavServiceBtn";
 import NavPackageBtn from "../Components/NavPackageBtn";
 import { Instagram, Menu, Phone } from "lucide-react";
 import { AuthButton } from "../authButton/auth-btn";
+import MobileNav from "../Mobile-Navbar/MobileNav";
 
 const Navbar = () => {
   return (
@@ -33,13 +34,10 @@ const Navbar = () => {
         </div>
       </div>
       <div className="hidden md:flex items-center justify-center gap-4">
-        {/* <Instagram />
-        <Phone />
-        <p>+91 72084 51005</p> */}
         <AuthButton />
       </div>
       <div className="flex items-center justify-center md:hidden">
-        <Menu />
+        <MobileNav />
       </div>
     </div>
   );

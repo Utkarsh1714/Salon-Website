@@ -8,10 +8,13 @@ export const AuthButton = () => {
   //TODO: Add different auth states
   return (
     <>
-        <SignedIn>
-            <UserButton />
-            {/* Add menu items for studio and user profiles */}
-        </SignedIn>
+      <SignedIn>
+        <div className="flex items-center justify-center gap-2">
+          <UserButton />
+          <h4 className="text-[#5B3728]">Profile</h4>
+        </div>
+        {/* Add menu items for studio and user profiles */}
+      </SignedIn>
       <SignedOut>
         <SignInButton mode="modal">
           <Button

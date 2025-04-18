@@ -6,6 +6,7 @@ import AnimatedContent from "@/reactbits/AnimatedContent/AnimatedContent";
 import FlowingMenu from "@/reactbits/FlowingMenu/FlowingMenu";
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Home() {
   // const items = [
@@ -68,7 +69,9 @@ export default function Home() {
           >
             <div className="flex items-center justify-center flex-col gap-8">
               <div className="w-full max-w-sm md:max-w-md flex flex-col items-center justify-center">
-                <img
+                <Image
+                  width={500}
+                  height={500}
                   src="/logo2.png"
                   alt="logo"
                   className="w-[200px] md:w-[300px]"
@@ -102,9 +105,11 @@ export default function Home() {
             scale={1.1}
             threshold={0.2}
           >
-            <img
-              src="/interior_img1.jpg"
+            <Image
+              src="/interior_img2.webp"
               alt="hero"
+              width={500}
+              height={500}
               className="w-[90%] md:w-[500px] h-auto rounded-tl-[100px] rounded-br-[100px] object-cover"
             />
           </AnimatedContent>
@@ -117,8 +122,10 @@ export default function Home() {
         <div className="bg-[#F2E9DF] w-full rounded-4xl flex flex-col md:flex-row items-center justify-center p-6 md:py-20">
           {/* Owner Image */}
           <div className="w-full md:w-1/2 flex items-center justify-center mb-8 md:mb-0">
-            <img
-              src="/hero_img1.jpg"
+            <Image
+              width={400}
+              height={500}
+              src="/hero_img2.webp"
               alt="owner"
               className="w-[300px] md:w-[450px] h-auto rounded-tl-[80px] rounded-br-[80px]"
             />
@@ -126,7 +133,9 @@ export default function Home() {
 
           {/* Text Section */}
           <div className="w-full md:w-1/2 text-[#5B3728] flex flex-col items-center md:items-center px-4 md:pr-10 space-y-4 md:-mt-20">
-            <img
+            <Image
+              width={500}
+              height={500}
               src="/Introduction2.png"
               alt="img"
               className="w-[200px] md:w-[350px] mix-blend-color-burn"
@@ -165,7 +174,7 @@ export default function Home() {
       <div className="py-10 w-full">
         <div className="flex flex-col items-center justify-center w-full">
           <div>
-            <img src="/Services.png" alt="Services" width={300} height={300} />
+            <Image src="/Services.png" alt="Services" width={300} height={300} />
           </div>
           <div
             className="flex flex-col md:flex-row items-center justify-center w-full relative"
@@ -199,7 +208,9 @@ export default function Home() {
               </AnimatedContent>
             </div>
             {hovered !== null && (
-              <img
+              <Image
+                width={250}
+                height={160}
                 src={services[hovered].image}
                 alt="Preview"
                 className="fixed object-cover pointer-events-none rounded-lg shadow-lg transition-all duration-200 ease-out z-40"
@@ -222,7 +233,7 @@ export default function Home() {
                 scale={1.1}
                 threshold={0.2}
               >
-                <img src="/Service-logo.png" alt="" />
+                <Image width={400} height={300} src="/Service-logo.png" alt="Service-sec-img" />
               </AnimatedContent>
             </div>
           </div>
