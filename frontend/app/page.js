@@ -172,7 +172,7 @@ export default function Home() {
       />
 
       {/* Services Section */}
-      <div className="py-10 w-full">
+      <div className="py-10 md:px-30 w-full">
         <div className="flex flex-col items-center justify-center w-full">
           <div>
             <Image
