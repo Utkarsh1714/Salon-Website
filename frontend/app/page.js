@@ -34,7 +34,6 @@ export default function Home() {
 
   const services = [
     { name: "Hair Care", image: "/services/Haircare.jpeg" },
-    { name: "Nail Care", image: "/services/NailCare.jpeg" },
     { name: "Skin & Face", image: "/services/SkinFace.jpeg" },
     { name: "Massage and Relaxation", image: "/services/Massage.jpeg" },
     { name: "Makeups", image: "/services/Makeup.jpeg" },
