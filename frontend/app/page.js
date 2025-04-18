@@ -72,7 +72,7 @@ export default function Home() {
                 <Image
                   width={500}
                   height={500}
-                  src="/logo2.png"
+                  src="/logo1.webp"
                   alt="logo"
                   className="w-[200px] md:w-[300px]"
                 />

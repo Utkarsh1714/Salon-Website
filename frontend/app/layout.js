@@ -1,6 +1,7 @@
 import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
+import { icons } from "lucide-react";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -12,6 +13,11 @@ const montserrat = Montserrat({
 export const metadata = {
   title: "Pooja Salon",
   description: "💇‍♀️ AI-Powered Salon Website",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({ children }) {
