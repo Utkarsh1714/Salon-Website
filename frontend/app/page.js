@@ -141,7 +141,7 @@ export default function Home() {
               className="w-[200px] md:w-[350px] mix-blend-color-burn"
             />
             <div className="text-base md:text-xl space-y-4">
-              <p className=" italic font-medium">"Where Passion Meets Beauty"</p>
+              <p className=" italic font-medium">&quot;Where Passion Meets Beauty&quot;</p>
               <p className="py-2">
                 Meet Pooja Palav, a passionate and skilled beautician with over
                 20 years of experience. Before launching her own salon, she
