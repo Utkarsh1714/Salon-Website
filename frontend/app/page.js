@@ -7,6 +7,7 @@ import FlowingMenu from "@/reactbits/FlowingMenu/FlowingMenu";
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { Facebook, Instagram, Twitter } from "lucide-react";
 
 export default function Home() {
   const services = [
@@ -117,7 +118,9 @@ export default function Home() {
               className="w-[200px] md:w-[350px] mix-blend-color-burn"
             />
             <div className="text-base md:text-base lg:text-2xl space-y-4">
-              <p className=" italic font-medium">&quot;Where Passion Meets Beauty&quot;</p>
+              <p className=" italic font-medium">
+                &quot;Where Passion Meets Beauty&quot;
+              </p>
               <p className="py-2">
                 Meet Pooja Palav, a passionate and skilled beautician with over
                 20 years of experience. Before launching her own salon, she
@@ -225,6 +228,65 @@ export default function Home() {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Footer Section */}
+      <div>
+        <footer className="bg-[#F2E9DF] text-[#5B3728] px-6 py-10 mt-10">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+            {/* Brand */}
+            <div className="flex items-center justify-center flex-col">
+              <h2 className="text-2xl font-semibold mb-2">Pooja Salon</h2>
+              <p className="text-sm">Your beauty, our passion.</p>
+            </div>
+
+            {/* Quick Links */}
+            <div className="flex flex-col items-center justify-center">
+              <h3 className="font-semibold mb-2">Quick Links</h3>
+              <ul className="space-y-1 text-sm">
+                <li>
+                  <Link href="/">Home</Link>
+                </li>
+                <li>
+                  <Link href="/about">About</Link>
+                </li>
+                <li>
+                  <Link href="/services">Services</Link>
+                </li>
+                <li>
+                  <Link href="/packages">Packages</Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Contact */}
+            <div className="flex flex-col items-center justify-center">
+              <h3 className="font-semibold mb-2">Contact Us</h3>
+              <p className="text-sm">Email: hello@glowstudio.com</p>
+              <p className="text-sm">Phone: +91 98765 43210</p>
+            </div>
+
+            {/* Social */}
+            <div className="flex flex-col items-center justify-center">
+              <h3 className="font-semibold mb-2">Follow Us</h3>
+              <div className="flex space-x-3">
+                <a href="#" aria-label="Facebook">
+                  <Facebook className="w-5 h-5" />
+                </a>
+                <a href="#" aria-label="Instagram">
+                  <Instagram className="w-5 h-5" />
+                </a>
+                <a href="#" aria-label="Twitter">
+                  <Twitter className="w-5 h-5" />
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center mt-8 text-sm border-t border-[#5B3728] pt-4">
+            © {new Date().getFullYear()} Pooja Salon. All rights reserved.
+          </div>
+        </footer>
       </div>
     </div>
   );
