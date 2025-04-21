@@ -43,7 +43,7 @@ const MobileNav = () => {
           <Menu />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className={'pr-10'}>
+      <DropdownMenuContent className={'mr-10'}>
         <DropdownMenuGroup>
           {navOptions.map((option, index) => (
             <DropdownMenuItem key={index}>
