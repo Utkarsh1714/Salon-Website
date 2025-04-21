@@ -8,6 +8,10 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Facebook, Instagram, Twitter } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useClerk } from "@clerk/nextjs";
+import { useAuth } from "@clerk/clerk-react";
+import Footer from "@/ui/footer/Footer";
 
 export default function Home() {
   const services = [
@@ -24,16 +28,21 @@ export default function Home() {
     setMousePos({ x: e.clientX, y: e.clientY });
   };
 
+  const clerk = useClerk();
+  const { isSignedIn } = useAuth();
+  const handleSignIn = (e) => {
+    if (!isSignedIn) {
+      e.preventDefault();
+      return clerk.openSignIn();
+    }
+  };
+
   return (
     <div className="w-full max-w-dvw">
-      <div className="w-full bg-[#F2E9DF]">
-        <Navbar />
-      </div>
-
       {/* Hero Section */}
       <div className="w-full flex flex-col md:flex-row items-center justify-center px-4 md:px-8 py-10 md:py-0">
         {/* Left Content */}
-        <div className="w-full md:w-1/2 flex items-center justify-center md:mt-10 md:px-4 z-0">
+        <div className="w-full md:w-1/2 flex items-center justify-center md:px-4 z-0">
           <AnimatedContent
             distance={150}
             direction="vertical"
@@ -62,9 +71,14 @@ export default function Home() {
                   “Where Beauty Meets Expertise – Your Ultimate Destination for
                   Pampering and Style”
                 </h1>
-                <button className="px-6 py-2 text-lg bg-[#C46842] text-white rounded-md">
-                  Book Appointment
-                </button>
+                <Link href={"/appointment-booking"} onClick={handleSignIn}>
+                  <Button
+                    variant={"ghost"}
+                    className="px-6 py-2 text-lg bg-[#C46842] text-white rounded-md hover:bg-[#E5C682] hover:text-[#5B3728] cursor-pointer"
+                  >
+                    Book Appointment
+                  </Button>
+                </Link>
               </div>
             </div>
           </AnimatedContent>
@@ -228,65 +242,6 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Footer Section */}
-      <div>
-        <footer className="bg-[#F2E9DF] text-[#5B3728] px-6 py-10 mt-10">
-          <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-            {/* Brand */}
-            <div className="flex items-center justify-center flex-col">
-              <h2 className="text-2xl font-semibold mb-2">Pooja Salon</h2>
-              <p className="text-sm">Your beauty, our passion.</p>
-            </div>
-
-            {/* Quick Links */}
-            <div className="flex flex-col items-center justify-center">
-              <h3 className="font-semibold mb-2">Quick Links</h3>
-              <ul className="space-y-1 text-sm">
-                <li>
-                  <Link href="/">Home</Link>
-                </li>
-                <li>
-                  <Link href="/about">About</Link>
-                </li>
-                <li>
-                  <Link href="/services">Services</Link>
-                </li>
-                <li>
-                  <Link href="/packages">Packages</Link>
-                </li>
-              </ul>
-            </div>
-
-            {/* Contact */}
-            <div className="flex flex-col items-center justify-center">
-              <h3 className="font-semibold mb-2">Contact Us</h3>
-              <p className="text-sm">Email: hello@glowstudio.com</p>
-              <p className="text-sm">Phone: +91 98765 43210</p>
-            </div>
-
-            {/* Social */}
-            <div className="flex flex-col items-center justify-center">
-              <h3 className="font-semibold mb-2">Follow Us</h3>
-              <div className="flex space-x-3">
-                <a href="#" aria-label="Facebook">
-                  <Facebook className="w-5 h-5" />
-                </a>
-                <a href="#" aria-label="Instagram">
-                  <Instagram className="w-5 h-5" />
-                </a>
-                <a href="#" aria-label="Twitter">
-                  <Twitter className="w-5 h-5" />
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div className="text-center mt-8 text-sm border-t border-[#5B3728] pt-4">
-            © {new Date().getFullYear()} Pooja Salon. All rights reserved.
-          </div>
-        </footer>
       </div>
     </div>
   );

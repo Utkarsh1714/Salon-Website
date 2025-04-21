@@ -43,7 +43,7 @@ const MobileNav = () => {
           <Menu />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent>
+      <DropdownMenuContent className={'pr-10'}>
         <DropdownMenuGroup>
           {navOptions.map((option, index) => (
             <DropdownMenuItem key={index}>
@@ -61,18 +61,9 @@ const MobileNav = () => {
               </Link>
             </DropdownMenuItem>
           ))}
-          {/* <DropdownMenuItem>
-            <Link href={"/about"} className="flex items-center justify-center gap-2 text-[#5B3728]"><User color="#E5C682"/>About</Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Link href={"/services"} className="flex items-center justify-center gap-2 text-[#5B3728]"><HeartHandshake color="#E5C682"/>Services</Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <Link href={"/packages"} className="flex items-center justify-center gap-2 text-[#5B3728]"><Package color="#E5C682"/>Packages</Link>
-          </DropdownMenuItem> */}
         </DropdownMenuGroup>
         <Separator />
-        <Button variant={"ghost"} className={"cursor-pointer my-2"}>
+        <Button variant={"ghost"} className={"cursor-pointer"}>
           <AuthButton />
         </Button>
       </DropdownMenuContent>

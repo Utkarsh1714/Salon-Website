@@ -1,6 +1,8 @@
 import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
+import Navbar from "@/ui/Navbar/Navbar";
+import Footer from "@/ui/footer/Footer";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -22,7 +24,11 @@ export default function RootLayout({ children }) {
   return (
     <ClerkProvider afterSignOutUrl={"/"}>
       <html lang="en">
-        <body className={montserrat.className}>{children}</body>
+        <body className={montserrat.className}>
+          <Navbar />
+          {children}
+          <Footer />
+        </body>
       </html>
     </ClerkProvider>
   );
