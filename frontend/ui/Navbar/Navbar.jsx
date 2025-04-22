@@ -13,7 +13,7 @@ const Navbar = () => {
   return (
     <div className="w-full flex items-center justify-between bg-[#F2E9DF] px-10 py-4 text-[#5B3728] z-50 overflow-hidden">
       <div>
-        <h1 className="text-2xl logo font-bold">Pooja Salon</h1>
+        <h1 className="text-xl md:text-2xl logo font-bold">Pooja Salon</h1>
       </div>
       <div className="items-center justify-center gap-4 hidden md:block">
         <div>
@@ -38,7 +38,7 @@ const Navbar = () => {
       <div className="hidden md:flex items-center justify-center gap-4">
         <AuthButton />
       </div>
-      <div className="flex items-center justify-center md:hidden">
+      <div className="md:hidden">
         <MobileNav />
       </div>
     </div>

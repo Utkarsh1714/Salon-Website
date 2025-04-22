@@ -26,7 +26,7 @@ function DropdownMenuTrigger({
 
 function DropdownMenuContent({
   className,
-  sideOffset = 0,
+  sideOffset = 4,
   ...props
 }) {
   return (

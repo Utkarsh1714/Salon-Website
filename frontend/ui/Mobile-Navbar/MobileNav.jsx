@@ -1,170 +1,3 @@
-// import { Button } from "@/components/ui/button";
-// import {
-//   DropdownMenu,
-//   DropdownMenuContent,
-//   DropdownMenuGroup,
-//   DropdownMenuItem,
-//   DropdownMenuTrigger,
-// } from "@/components/ui/dropdown-menu";
-// import { Separator } from "@/components/ui/separator";
-// import { HeartHandshake, House, Menu, Package, User } from "lucide-react";
-// import Link from "next/link";
-// import { AuthButton } from "../authButton/auth-btn";
-// import { useAuth, useClerk } from "@clerk/nextjs";
-
-// const MobileNav = () => {
-//   const navOptions = [
-//     {
-//       label: "Home",
-//       route: "/",
-//       icon: <House color="#E5C682" />,
-//     },
-//     {
-//       label: "About",
-//       route: "/about",
-//       icon: <User color="#E5C682" />,
-//     },
-//     {
-//       label: "Services",
-//       route: "/services",
-//       icon: <HeartHandshake color="#E5C682" />,
-//       auth: true,
-//     },
-//     {
-//       label: "Packages",
-//       route: "/packages",
-//       icon: <Package color="#E5C682" />,
-//       auth: true,
-//     },
-//   ];
-
-//   const clerk = useClerk();
-//   const { isSignedIn } = useAuth();
-//   return (
-//     <DropdownMenu>
-//       <DropdownMenuTrigger asChild>
-//         <Button variant="ghost">
-//           <Menu />
-//         </Button>
-//       </DropdownMenuTrigger>
-//       <DropdownMenuContent>
-//         <Button variant={"ghost"} className={"cursor-pointer flex items-center justify-center"}>
-//           <AuthButton />
-//         </Button>
-//         <Separator />
-//         <DropdownMenuGroup>
-//           {navOptions.map((option, index) => (
-//             <DropdownMenuItem key={index}>
-//               <Link
-//                 href={`${option.route}`}
-//                 className="flex items-center justify-center gap-2 text-[#5B3728]"
-//                 onClick={(e) => {
-//                   if (!isSignedIn) {
-//                     e.preventDefault();
-//                     return clerk.openSignIn();
-//                   }
-//                 }}
-//               >
-//                 {option.icon} {option.label}
-//               </Link>
-//             </DropdownMenuItem>
-//           ))}
-//         </DropdownMenuGroup>
-//       </DropdownMenuContent>
-//     </DropdownMenu>
-//   );
-// };
-
-// export default MobileNav;
-
-// import { Button } from "@/components/ui/button";
-// import {
-//   DropdownMenu,
-//   DropdownMenuContent,
-//   DropdownMenuGroup,
-//   DropdownMenuItem,
-//   DropdownMenuTrigger,
-// } from "@/components/ui/dropdown-menu";
-// import { Separator } from "@/components/ui/separator";
-// import { HeartHandshake, House, Menu, Package, User } from "lucide-react";
-// import Link from "next/link";
-// import { AuthButton } from "../authButton/auth-btn";
-// import { useAuth, useClerk } from "@clerk/nextjs";
-
-// const MobileNav = () => {
-//   const navOptions = [
-//     {
-//       label: "Home",
-//       route: "/",
-//       icon: <House color="#E5C682" />,
-//       auth: false,
-//     },
-//     {
-//       label: "About",
-//       route: "/about",
-//       icon: <User color="#E5C682" />,
-//       auth: false,
-//     },
-//     {
-//       label: "Services",
-//       route: "/services",
-//       icon: <HeartHandshake color="#E5C682" />,
-//       auth: true,
-//     },
-//     {
-//       label: "Packages",
-//       route: "/packages",
-//       icon: <Package color="#E5C682" />,
-//       auth: true,
-//     },
-//   ];
-
-//   const clerk = useClerk();
-//   const { isSignedIn } = useAuth();
-//   return (
-//     <div className="flex items-center justify-center">
-//       <Button
-//         variant={"ghost"}
-//         className={"cursor-pointer flex items-center justify-center"}
-//       >
-//         <AuthButton />
-//       </Button>
-//       <DropdownMenu>
-//         <DropdownMenuTrigger asChild>
-//           <Button variant="ghost">
-//             <Menu />
-//           </Button>
-//         </DropdownMenuTrigger>
-//         <DropdownMenuContent>
-//           <Separator />
-//           <DropdownMenuGroup>
-//             {navOptions.map((option, index) => (
-//               <DropdownMenuItem key={index}>
-//                 <Link
-//                   href={`${option.route}`}
-//                   className="flex items-center justify-center gap-2 text-[#5B3728]"
-//                   onClick={(e) => {
-//                     if (!isSignedIn) {
-//                       e.preventDefault();
-//                       return clerk.openSignIn();
-//                     }
-//                   }}
-//                 >
-//                   {option.icon} {option.label}
-//                 </Link>
-//               </DropdownMenuItem>
-//             ))}
-//           </DropdownMenuGroup>
-//         </DropdownMenuContent>
-//       </DropdownMenu>
-//     </div>
-//   );
-// };
-
-// export default MobileNav;
-
-
-
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -177,6 +10,7 @@ import { HeartHandshake, House, Menu, Package, User } from "lucide-react";
 import Link from "next/link";
 import { AuthButton } from "../authButton/auth-btn";
 import { useAuth, useClerk } from "@clerk/nextjs";
+import { Sidebar, SidebarContent, SidebarGroup, SidebarTrigger } from "@/components/ui/sidebar";
 
 const MobileNav = () => {
   const { isSignedIn } = useAuth();
@@ -210,7 +44,7 @@ const MobileNav = () => {
   ];
 
   return (
-    <div className="flex items-center justify-center gap-2">
+    <div className="flex items-end justify-end">
       <Button variant="ghost" className="cursor-pointer">
         <AuthButton />
       </Button>
@@ -222,7 +56,7 @@ const MobileNav = () => {
           </Button>
         </DropdownMenuTrigger>
 
-        <DropdownMenuContent>
+        <DropdownMenuContent className={'w-full'}>
           <DropdownMenuGroup>
             {navOptions.map(({ label, route, icon, auth }, index) => (
               <DropdownMenuItem key={index} className="p-0">

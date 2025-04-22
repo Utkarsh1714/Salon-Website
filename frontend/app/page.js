@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { useClerk } from "@clerk/nextjs";
 import { useAuth } from "@clerk/clerk-react";
 import Footer from "@/ui/footer/Footer";
+import { SidebarProvider } from "@/components/ui/sidebar";
 
 export default function Home() {
   const services = [

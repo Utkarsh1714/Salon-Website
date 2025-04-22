@@ -25,9 +25,9 @@ export default function RootLayout({ children }) {
     <ClerkProvider afterSignOutUrl={"/"}>
       <html lang="en">
         <body className={montserrat.className}>
-          <Navbar />
-          {children}
-          <Footer />
+            <Navbar />
+            {children}
+            <Footer />
         </body>
       </html>
     </ClerkProvider>
