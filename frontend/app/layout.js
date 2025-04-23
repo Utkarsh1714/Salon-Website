@@ -3,6 +3,7 @@ import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import Navbar from "@/ui/Navbar/Navbar";
 import Footer from "@/ui/footer/Footer";
+import { Toaster } from "react-hot-toast";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -25,9 +26,10 @@ export default function RootLayout({ children }) {
     <ClerkProvider afterSignOutUrl={"/"}>
       <html lang="en">
         <body className={montserrat.className}>
-            <Navbar />
-            {children}
-            <Footer />
+          <Navbar />
+          <Toaster position="top-right" />
+          {children}
+          <Footer />
         </body>
       </html>
     </ClerkProvider>

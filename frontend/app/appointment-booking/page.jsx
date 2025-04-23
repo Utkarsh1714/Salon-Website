@@ -7,6 +7,7 @@ import { useUser } from "@clerk/nextjs";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 import { date } from "zod";
 
 const page = () => {
@@ -25,8 +26,21 @@ const page = () => {
     setLoading(true);
 
     try {
-      await axios.post("/api/appointments", form);
-      alert("Appointment booked successfully!");
+      // await axios.post("/api/appointments", form);
+      // alert("Appointment booked successfully!");
+      // setForm({ date: "", time: "", note: "" });
+      // router.push("/account");
+
+      const res = await axios.post("/api/appointments", form);
+
+      toast.success("Appointment booked successfully!");
+
+      // Send email in background
+      axios.post("/api/send-email", form).catch((err) => {
+        toast.error("Failed to send confirmation email.");
+        console.warn("Email error:", err?.response?.data || err.message);
+      });
+
       setForm({ date: "", time: "", note: "" });
       router.push("/account");
     } catch (error) {
@@ -68,7 +82,7 @@ const page = () => {
             </p>
             <form onSubmit={handleSubmit} className="space-y-4 pt-4">
               <input
-              placeholder="Select Date"
+                placeholder="Select Date"
                 type="date"
                 name="date"
                 value={form.date}
@@ -77,7 +91,7 @@ const page = () => {
                 required
               />
               <input
-              placeholder="Select Time"
+                placeholder="Select Time"
                 type="time"
                 name="time"
                 value={form.time}

@@ -15,7 +15,6 @@ import { NextResponse } from "next/server";
 //     });
 //   }
 
-  
 //   try {
 //       const { date, time, note } = await req.json();
 //     const client = await clientPromise;
@@ -62,101 +61,102 @@ import { NextResponse } from "next/server";
 // }
 
 export async function POST(req) {
-    const { userId } = await auth();
-  
-    if (!userId) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-    }
-  
-    try {
-      const { date, time, note } = await req.json();
-      const client = await clientPromise;
-      const db = client.db("appointmentsDB");
-  
-      // Start inserting the appointment
-      const insertResult = await db.collection("appointments").insertOne({
-        userId,
-        date,
-        time,
-        note,
-        createdAt: new Date(),
-      });
-  
-      // Trigger email sending in the background (no await)
-      (async () => {
-        try {
-          const userRes = await fetch(`https://api.clerk.dev/v1/users/${userId}`, {
-            headers: {
-              Authorization: `Bearer ${process.env.CLERK_SECRET_KEY}`,
-              "Content-Type": "application/json",
-            },
-          });
-  
-          if (!userRes.ok) throw new Error("Failed to fetch user from Clerk");
-  
-          const user = await userRes.json();
-          const customerEmail = user.email_addresses?.[0]?.email_address;
-  
-          await sendAppointmentEmail({
-            toCustomer: true,
-            customerEmail,
-            date,
-            time,
-            note,
-          });
-        } catch (err) {
-          console.error("Background email send failed:", err);
-        }
-      })();
-  
-      return NextResponse.json(
-        { success: true, appointmentId: insertResult.insertedId },
-        { status: 200 }
-      );
-    } catch (error) {
-      console.error("POST /api/appointments error:", error);
-      return NextResponse.json(
-        { error: "Error booking appointment" },
-        { status: 500 }
-      );
-    }
+  const { userId } = await auth();
+
+  if (!userId) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-export async function GET(req) {
-  try {
-    const { userId } = await auth();
+  const { date, time, note } = await req.json();
 
+  try {
+    const client = await clientPromise;
+    const db = client.db("appointmentsDB");
+
+    // Start inserting the appointment
+    const result = await db.collection("appointments").insertOne({
+      userId,
+      date,
+      time,
+      note,
+      createdAt: new Date(),
+    });
+
+    const res = NextResponse.json(
+      { success: true, appointmentId: result.insertedId },
+      { status: 200 }
+    );
+
+    // Send email async without blocking response
+    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/send-email`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId, date, time, note }),
+    }).catch((err) => console.error("Background email error:", err));
+
+    return res;
+  } catch (error) {
+    console.error("Appointment Error:", error);
+    return NextResponse.json({ error: "Something went wrong" }, { status: 500 });
+  }
+}
+
+// export async function GET(req) {
+//   try {
+//     const { userId } = await auth();
+
+//     if (!userId) {
+//       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+//     }
+
+//     try {
+//       const client = await clientPromise;
+//       const db = client.db("appointmentsDB");
+//       const appointmentsCollection = await db.collection("appointments");
+
+//       // Find all appointments for the logged-in user
+//       const appointments = await appointmentsCollection
+//         .find({ userId })
+//         .sort({ date: -1 })
+//         .toArray();
+
+//       return new Response(JSON.stringify(appointments), {
+//         status: 200,
+//       });
+//     } catch (error) {
+//       console.error("Error fetching appointments:", error);
+//       return new Response(
+//         JSON.stringify({ message: "Internal Server Error" }),
+//         {
+//           status: 500,
+//         }
+//       );
+//     }
+//   } catch (error) {
+//     console.error("Error fetching appointments:", error);
+//     return NextResponse.json({ error: "Server Error" }, { status: 500 });
+//   }
+// }
+
+export async function GET(req) {
+    const { userId } = auth();
+  
     if (!userId) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
-
-    console.log("User ID:", userId);
-
+  
     try {
       const client = await clientPromise;
       const db = client.db("appointmentsDB");
-      const appointmentsCollection = await db.collection("appointments");
-
-      // Find all appointments for the logged-in user
-      const appointments = await appointmentsCollection
+      const appointments = await db
+        .collection("appointments")
         .find({ userId })
         .sort({ date: -1 })
         .toArray();
-
-      return new Response(JSON.stringify(appointments), {
-        status: 200,
-      });
+  
+      return NextResponse.json(appointments, { status: 200 });
     } catch (error) {
-      console.error("Error fetching appointments:", error);
-      return new Response(
-        JSON.stringify({ message: "Internal Server Error" }),
-        {
-          status: 500,
-        }
-      );
+      console.error("Get Appointments Error:", error);
+      return NextResponse.json({ error: "Server error" }, { status: 500 });
     }
-  } catch (error) {
-    console.error("Error fetching appointments:", error);
-    return NextResponse.json({ error: "Server Error" }, { status: 500 });
   }
-}
