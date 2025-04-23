@@ -6,60 +6,121 @@ import { getAuth } from "@clerk/nextjs/server";
 import { users } from "@clerk/clerk-sdk-node";
 import { NextResponse } from "next/server";
 
+// export async function POST(req) {
+//   const { userId } = await auth();
+
+//   if (!userId) {
+//     return new Response(JSON.stringify({ error: "Unauthorized" }), {
+//       status: 401,
+//     });
+//   }
+
+  
+//   try {
+//       const { date, time, note } = await req.json();
+//     const client = await clientPromise;
+//     const db = client.db("appointmentsDB");
+
+//     const user = await fetch(`https://api.clerk.dev/v1/users/${userId}`, {
+//       headers: {
+//         Authorization: `Bearer ${process.env.CLERK_SECRET_KEY}`,
+//         "Content-Type": "application/json",
+//       },
+//     }).then((res) => res.json());
+
+//     const customerEmail = user.email_addresses?.[0]?.email_address;
+//     console.log(customerEmail);
+
+//     const result = await db.collection("appointments").insertOne({
+//       userId,
+//       date,
+//       time,
+//       note,
+//       createdAt: new Date(),
+//     });
+
+//     await sendAppointmentEmail({
+//       toCustomer: true,
+//       customerEmail,
+//       date,
+//       time,
+//       note,
+//     });
+
+//     return new Response(
+//       JSON.stringify({ success: true, appointmentId: result.insertedId }),
+//       {
+//         status: 200,
+//       }
+//     );
+//   } catch (error) {
+//     console.error("Mongo Error:", error);
+//     return new Response(JSON.stringify({ error: "Database error" }), {
+//       status: 500,
+//     });
+//   }
+// }
+
 export async function POST(req) {
-  const { userId } = await auth();
-
-  if (!userId) {
-    return new Response(JSON.stringify({ error: "Unauthorized" }), {
-      status: 401,
-    });
+    const { userId } = await auth();
+  
+    if (!userId) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+  
+    try {
+      const { date, time, note } = await req.json();
+      const client = await clientPromise;
+      const db = client.db("appointmentsDB");
+  
+      // Start inserting the appointment
+      const insertResult = await db.collection("appointments").insertOne({
+        userId,
+        date,
+        time,
+        note,
+        createdAt: new Date(),
+      });
+  
+      // Trigger email sending in the background (no await)
+      (async () => {
+        try {
+          const userRes = await fetch(`https://api.clerk.dev/v1/users/${userId}`, {
+            headers: {
+              Authorization: `Bearer ${process.env.CLERK_SECRET_KEY}`,
+              "Content-Type": "application/json",
+            },
+          });
+  
+          if (!userRes.ok) throw new Error("Failed to fetch user from Clerk");
+  
+          const user = await userRes.json();
+          const customerEmail = user.email_addresses?.[0]?.email_address;
+  
+          await sendAppointmentEmail({
+            toCustomer: true,
+            customerEmail,
+            date,
+            time,
+            note,
+          });
+        } catch (err) {
+          console.error("Background email send failed:", err);
+        }
+      })();
+  
+      return NextResponse.json(
+        { success: true, appointmentId: insertResult.insertedId },
+        { status: 200 }
+      );
+    } catch (error) {
+      console.error("POST /api/appointments error:", error);
+      return NextResponse.json(
+        { error: "Error booking appointment" },
+        { status: 500 }
+      );
+    }
   }
-
-  const { date, time, note } = await req.json();
-
-  try {
-    const client = await clientPromise;
-    const db = client.db("appointmentsDB");
-
-    const user = await fetch(`https://api.clerk.dev/v1/users/${userId}`, {
-      headers: {
-        Authorization: `Bearer ${process.env.CLERK_SECRET_KEY}`,
-        "Content-Type": "application/json",
-      },
-    }).then((res) => res.json());
-
-    const customerEmail = user.email_addresses?.[0]?.email_address;
-    console.log(customerEmail);
-
-    const result = await db.collection("appointments").insertOne({
-      userId,
-      date,
-      time,
-      note,
-      createdAt: new Date(),
-    });
-
-    await sendAppointmentEmail({
-      toCustomer: true,
-      customerEmail,
-      date,
-      time,
-      note,
-    });
-
-    return new Response(
-      JSON.stringify({ success: true, appointmentId: result.insertedId }),
-      {
-        status: 200,
-      }
-    );
-  } catch (error) {
-    console.error("Mongo Error:", error);
-    return new Response(JSON.stringify({ error: "Database error" }), {
-      status: 500,
-    });
-  }
-}
 
 export async function GET(req) {
   try {
