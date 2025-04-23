@@ -10,6 +10,11 @@ export async function POST(req) {
 
   const { date, time, note } = await req.json();
 
+  const newDate = new Date(date).toLocaleDateString("en-CA", {
+    timeZone: "Asia/Kolkata", // Use "Asia/Kolkata" if you want local India time
+  });
+  
+
   try {
     const user = await users.getUser(userId);
     const email = user.emailAddresses[0].emailAddress;
@@ -19,7 +24,7 @@ export async function POST(req) {
     await sendAppointmentEmail({
       toCustomer: true,
       customerEmail: email,
-      date,
+      date: newDate,
       time,
       note,
     });

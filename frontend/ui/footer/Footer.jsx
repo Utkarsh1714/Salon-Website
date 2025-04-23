@@ -35,21 +35,26 @@ const Footer = () => {
         {/* Quick Links */}
         <div className="flex flex-col items-center justify-center">
           <h3 className="font-semibold mb-2">Quick Links</h3>
-          <ul className="space-y-1 text-sm">
-            <li>
+          <ul className="space-x-6 text-sm flex flex-wrap items-center justify-center">
+            <li className="hover:text-blue-500">
               <Link href="/">Home</Link>
             </li>
-            <li>
+            <li className="hover:text-blue-500">
               <Link href="/about">About</Link>
             </li>
-            <li>
+            <li className="hover:text-blue-500">
               <Link onClick={handleSignIn} href="/services">
                 Services
               </Link>
             </li>
-            <li>
+            <li className="hover:text-blue-500">
               <Link onClick={handleSignIn} href="/packages">
                 Packages
+              </Link>
+            </li>
+            <li className="hover:text-blue-500">
+              <Link onClick={handleSignIn} href="/account">
+                Profile
               </Link>
             </li>
           </ul>

@@ -8,8 +8,11 @@ import NavPackageBtn from "../Components/NavPackageBtn";
 import { Instagram, Menu, Phone } from "lucide-react";
 import { AuthButton } from "../authButton/auth-btn";
 import MobileNav from "../Mobile-Navbar/MobileNav";
+import { useAuth, useClerk } from "@clerk/nextjs";
 
 const Navbar = () => {
+  const clerk = useClerk();
+  const { isSignedIn } = useAuth();
   return (
     <div className="w-full flex items-center justify-between bg-[#F2E9DF] px-10 py-4 text-[#5B3728] z-50 overflow-hidden">
       <div>
@@ -33,7 +36,12 @@ const Navbar = () => {
           <Link href={''} className={"cursor-pointer"}>
             <NavPackageBtn />
           </Link>
-          <Link href={"/account"}>
+          <Link href={"/account"} onClick={(e) => {
+            if (!isSignedIn) {
+              e.preventDefault();
+              return clerk.openSignIn();
+            }
+          }}>
             <Button variant={"ghost"} className={"cursor-pointer"}>
               Profile
             </Button>

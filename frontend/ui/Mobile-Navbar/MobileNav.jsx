@@ -6,11 +6,10 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { HeartHandshake, House, Menu, Package, User } from "lucide-react";
+import { CircleUserRound, HeartHandshake, House, Menu, Package, User } from "lucide-react";
 import Link from "next/link";
 import { AuthButton } from "../authButton/auth-btn";
 import { useAuth, useClerk } from "@clerk/nextjs";
-import { Sidebar, SidebarContent, SidebarGroup, SidebarTrigger } from "@/components/ui/sidebar";
 
 const MobileNav = () => {
   const { isSignedIn } = useAuth();
@@ -39,6 +38,12 @@ const MobileNav = () => {
       label: "Packages",
       route: "/packages",
       icon: <Package color="#E5C682" />,
+      auth: true,
+    },
+    {
+      label: "Profile",
+      route: "/account",
+      icon: <CircleUserRound color="#E5C682"/>,
       auth: true,
     },
   ];
