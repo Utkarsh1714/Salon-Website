@@ -68,6 +68,7 @@ const page = () => {
             </p>
             <form onSubmit={handleSubmit} className="space-y-4 pt-4">
               <input
+              placeholder="Select Date"
                 type="date"
                 name="date"
                 value={form.date}
@@ -76,6 +77,7 @@ const page = () => {
                 required
               />
               <input
+              placeholder="Select Time"
                 type="time"
                 name="time"
                 value={form.time}
