@@ -40,7 +40,7 @@ const page = () => {
             <h2 className="text-[28px] md:text-5xl text-[#e1b75c] font-medium">
               Where Beauty Meets Experience
             </h2>
-            <p className="text-xl md:text-3xl">
+            <p className="text-xl md:text-2xl font-serif">
               At Pooja Salon, we believe that beauty is not just a service –
               it's an experience. With over 20 years of excellence in the beauty
               and wellness industry, our salon has been a sanctuary for women
@@ -73,14 +73,14 @@ const page = () => {
             <h2 className="text-[28px] md:text-5xl text-[#e1b75c] font-medium">
               Our Story
             </h2>
-            <p className="text-xl md:text-3xl">
+            <p className="text-xl md:text-2xl font-serif">
               Founded by Pooja Palav, a passionate beauty expert and stylist,
               our journey began with a simple goal – to empower every woman to
               feel confident and radiant in her own skin. What started as a
               modest salon has today become a trusted destination for thousands
               of women who value both quality and care.
             </p>
-            <p className="text-xl md:text-3xl">
+            <p className="text-xl md:text-2xl font-serif">
               Our commitment to <strong>personalized beauty</strong> and
               continuous learning has kept us ahead in trends while never losing
               the warmth of traditional service.
@@ -112,7 +112,7 @@ const page = () => {
             <h2 className="text-[28px] md:text-5xl text-[#e1b75c] font-medium">
               What Makes Us Special?
             </h2>
-            <ul className="space-y-4 text-xl md:text-3xl list-none">
+            <ul className="space-y-4 text-xl md:text-2xl font-serif list-none">
               <li>• 🌸 20+ Years of Experience in Ladies Beauty Care</li>
               <li>• 💇‍♀️ Certified Experts in Hair, Skin, and Bridal Styling</li>
               <li>• 🌿 Hygienic, Peaceful & Luxurious Ambience</li>
@@ -148,7 +148,7 @@ const page = () => {
             <h2 className="text-[28px] md:text-5xl text-[#e1b75c] font-medium">
               Our Philosophy
             </h2>
-            <p className="text-xl md:text-3xl">
+            <p className="text-xl md:text-2xl font-serif">
               We believe that true beauty lies in confidence and comfort. That's
               why every service we offer is tailored to enhance your natural
               beauty — not change it. Whether you're here for a quick refresh or
@@ -182,7 +182,7 @@ const page = () => {
             <h2 className="text-[28px] md:text-5xl text-[#e1b75c] font-medium text-center">
               Visit Us
             </h2>
-            <p className="text-xl md:text-3xl">
+            <p className="text-xl md:text-2xl font-serif">
               Come, be a part of our journey and let us be a part of yours. At
               Pooja Salon, you're not just a client — you're family.
             </p>

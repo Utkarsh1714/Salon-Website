@@ -33,6 +33,11 @@ const Navbar = () => {
           <Link href={''} className={"cursor-pointer"}>
             <NavPackageBtn />
           </Link>
+          <Link href={"/account"}>
+            <Button variant={"ghost"} className={"cursor-pointer"}>
+              Profile
+            </Button>
+          </Link>
         </div>
       </div>
       <div className="hidden md:flex items-center justify-center gap-4">

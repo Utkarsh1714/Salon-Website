@@ -2,39 +2,33 @@
 
 import AnimatedContent from "@/reactbits/AnimatedContent/AnimatedContent";
 import BlurText from "@/reactbits/BlurText/BlurText";
+import SplitText from "@/reactbits/SplitText/SplitText";
 import { useUser } from "@clerk/nextjs";
+import axios from "axios";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import { date } from "zod";
 
 const page = () => {
   const [loading, setLoading] = useState(false);
-  const [name, setName] = useState("");
-  const [date, setDate] = useState("");
-  const [note, setNote] = useState("");
   const { user } = useUser();
+  const [form, setForm] = useState({ date: "", time: "", note: "" });
+
   const router = useRouter();
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
     try {
-      const res = await fetch("/api/appointments", {
-        method: "POST",
-        body: JSON.stringify({
-          name,
-          date,
-          note,
-          email: user?.primaryEmailAddress.emailAddress,
-        }),
-      });
-
-      if (res.ok) {
-        alert("Appointment booked successfully!");
-        router.push("/");
-      } else {
-        alert("Error booking appointment!");
-      }
+      await axios.post("/api/appointments", form);
+      alert("Appointment booked successfully!");
+      setForm({ date: "", time: "", note: "" });
+      router.push("/account");
     } catch (error) {
       console.error("Error:", error);
       alert("An error occurred while booking the appointment.");
@@ -44,16 +38,18 @@ const page = () => {
   };
 
   return (
-    <div className="w-full h-screen flex items-center justify-center px-10">
+    <div className="w-full py-15 flex items-center justify-center px-10">
       <div className="flex items-center justify-center gap-20">
-        <div className="p-4 md:w-1/2 max-w-md mx-auto space-y-4">
-          {/* <h1 className="text-xl md:text-4xl text-center text-[#5B3728] font-medium">Book Appointment</h1> */}
-          <BlurText
+        <div className="p-4 md:w-1/2 max-w-md space-y-4">
+          <SplitText
             text="Book Your Appointment"
-            delay={150}
-            animateBy="words"
-            direction="top"
-            className="text-4xl md:text-4xl text-center text-[#5B3728] font-medium"
+            className="text-xl md:text-4xl text-center text-[#5B3728] font-medium"
+            delay={50}
+            animationFrom={{ opacity: 0, transform: "translate3d(0,50px,0)" }}
+            animationTo={{ opacity: 1, transform: "translate3d(0,0,0)" }}
+            easing="easeOutCubic"
+            threshold={0.2}
+            rootMargin="-50px"
           />
           <AnimatedContent
             distance={150}
@@ -72,34 +68,36 @@ const page = () => {
             </p>
             <form onSubmit={handleSubmit} className="space-y-4 pt-4">
               <input
-                placeholder="Your Name"
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                type="date"
+                name="date"
+                value={form.date}
+                onChange={handleChange}
                 className="w-full p-2 border"
                 required
               />
               <input
-                type="date"
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
+                type="time"
+                name="time"
+                value={form.time}
+                onChange={handleChange}
                 className="w-full p-2 border"
                 required
               />
               <textarea
                 placeholder="Optional Note"
-                value={note}
-                onChange={(e) => setNote(e.target.value)}
+                name="note"
+                value={form.note}
+                onChange={handleChange}
                 className="w-full p-2 border"
               ></textarea>
               <button
                 type="submit"
-                className="bg-blue-600 text-white px-4 py-2 rounded"
+                className="px-6 py-2 text-lg bg-[#C46842] text-white rounded-md hover:bg-[#E5C682] hover:text-[#5B3728] cursor-pointer"
               >
                 {loading ? (
                   <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                 ) : (
-                  "Book Appointment"
+                  "Confirm Appointment"
                 )}
               </button>
             </form>

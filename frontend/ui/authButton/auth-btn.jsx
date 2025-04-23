@@ -35,7 +35,6 @@ export const AuthButton = () => {
               ],
             }}
           />
-          <h4 className="text-[#5B3728] cursor-pointer">Profile</h4>
         </div>
       </SignedIn>
 

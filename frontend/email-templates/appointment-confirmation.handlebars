@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Appointment with Pooja Salon is Confirmed</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif; /* A classic, luxurious-feeling serif font */
+            color: #333; /* Dark, sophisticated grey */
+            background-color: #f8f8f8; /* Light, elegant background */
+            margin: 20px;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0e0e0;
+        }
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo img {
+            max-width: 200px; /* Adjust as needed */
+            height: auto;
+        }
+        h2 {
+            color: #555;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        p {
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        strong {
+            color: #007bff; /* A touch of elegant blue */
+        }
+        .note {
+            font-style: italic;
+            color: #777;
+        }
+        .greeting {
+            font-size: 1.1em;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        .signature {
+            text-align: right;
+            color: #555;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="https://ik.imagekit.io/49dcukflr/favicon.ico?updatedAt=1745412674678" alt="Pooja Salon Logo">
+        </div>
+        <h2>Your Appointment with Pooja Salon is Confirmed</h2>
+        <p class="greeting">Dear Valued Guest,</p>
+        <p>We are absolutely thrilled to confirm your upcoming appointment with Pooja Salon. Get ready to indulge in an experience crafted with precision and passion by our expert stylists and therapists.</p>
+        <p><strong>Date:</strong> {{date}}</p>
+        <p><strong>Time:</strong> {{time}}</p>
+        <p><strong>Note:</strong> <span class="note">{{note}}</span></p>
+        <p>At Pooja Salon, we pride ourselves on our meticulous attention to detail and our commitment to bringing out your unique beauty. We look forward to providing you with exceptional service and ensuring you leave feeling refreshed and radiant.</p>
+        <p>Thank you for choosing Pooja Salon. We eagerly await your visit!</p>
+        <p class="signature">Warmly,<br>The Team at Pooja Salon</p>
+    </div>
+</body>
+</html>
