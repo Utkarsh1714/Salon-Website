@@ -139,7 +139,7 @@ export async function POST(req) {
 // }
 
 export async function GET(req) {
-    const { userId } = auth();
+    const { userId } = await auth();
   
     if (!userId) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });

@@ -1,3 +1,4 @@
+import { sendAppointmentEmail } from "@/lib/mailer";
 import { users } from "@clerk/clerk-sdk-node";
 import { auth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
